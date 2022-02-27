@@ -81,6 +81,8 @@ return packer.startup(function(use)
   -- bufferline
   use "akinsho/bufferline.nvim"
   use "moll/vim-bbye"
+  -- copy to system clipboard via terminal
+  use "ojroques/vim-oscyank"
   
 
   if PACKER_BOOTSTRAP then
