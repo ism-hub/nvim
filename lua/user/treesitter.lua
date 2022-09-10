@@ -1,6 +1,6 @@
 local configs = require("nvim-treesitter.configs")
 configs.setup({
-	ensure_installed = "maintained",
+	--ensure_installed = "maintained",
 	sync_install = false,
 	ignore_install = { "" }, -- List of parsers to ignore installing
 	highlight = {
@@ -11,5 +11,3 @@ configs.setup({
 	indent = { enable = true, disable = { "yaml" } },
 })
 
-vim.cmd([[set foldmethod=expr]])
-vim.cmd([[set foldexpr=nvim_treesitter#foldexpr()]])
