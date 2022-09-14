@@ -80,7 +80,7 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-tree.lua")
 	-- bufferline
 	--use("akinsho/bufferline.nvim")
-    use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
+	use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
 	use("moll/vim-bbye")
 	-- copy to system clipboard via terminal
 	use("ojroques/vim-oscyank")
@@ -91,8 +91,9 @@ return packer.startup(function(use)
 	-- git
 	use("tpope/vim-fugitive")
 	-- zoom in/out of window <C-w>m
-    use "dhruvasagar/vim-zoom"
+	use("dhruvasagar/vim-zoom")
 
+	use("chentoast/marks.nvim")
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
