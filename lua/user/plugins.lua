@@ -62,7 +62,16 @@ return packer.startup(function(use)
 	use("williamboman/nvim-lsp-installer") -- simple to use language server
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	-- Telescope
-	use("nvim-telescope/telescope.nvim")
+	--[[ use("nvim-telescope/telescope.nvim") ]]
+	use({
+		"nvim-telescope/telescope.nvim",
+		requires = {
+			{ "nvim-telescope/telescope-live-grep-args.nvim" },
+		},
+		config = function()
+			require("telescope").load_extension("live_grep_args")
+		end,
+	})
 	-- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",

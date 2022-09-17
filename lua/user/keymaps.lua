@@ -45,10 +45,11 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 keymap(
 	"n",
 	"<leader>f",
-	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false, hidden=true, no_ignore=true }))<cr>",
 	opts
 )
-keymap("n", "<leader>g", "<cmd>Telescope live_grep<cr>", opts)
+--[[ keymap("n", "<leader>g", "<cmd>Telescope live_grep<cr>", opts) ]]
+keymap("n", "<leader>g", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", opts)
 
 -- easy save
 keymap("n", "<leader>w", ":Format<CR>:w<CR>", opts)
