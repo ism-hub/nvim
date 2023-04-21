@@ -97,7 +97,7 @@ return packer.startup(function(use)
 	use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
 	use("moll/vim-bbye")
 	-- copy to system clipboard via terminal
-	use("ojroques/vim-oscyank")
+	use({ "ojroques/nvim-osc52" })
 	-- vim navigation
 	use("ggandor/lightspeed.nvim")
 	-- show signature of functions while typing and the variable im in
