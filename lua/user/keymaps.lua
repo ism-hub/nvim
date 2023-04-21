@@ -53,7 +53,7 @@ keymap(
 keymap("n", "<leader>g", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", opts)
 
 -- easy save
-keymap("n", "<leader>w", ":Format<CR>:w<CR>", opts)
+keymap("n", "<leader>w", ":w<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter
