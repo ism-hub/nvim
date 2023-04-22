@@ -43,14 +43,11 @@ keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Telescope
-keymap(
-	"n",
-	"<leader>f",
-	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false, hidden=true, no_ignore=true }))<cr>",
-	opts
-)
---[[ keymap("n", "<leader>g", "<cmd>Telescope live_grep<cr>", opts) ]]
-keymap("n", "<leader>g", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", opts)
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
 -- easy save
 keymap("n", "<leader>w", ":w<CR>", opts)
