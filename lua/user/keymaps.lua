@@ -52,6 +52,9 @@ vim.keymap.set("n", "<leader>f/", builtin.current_buffer_fuzzy_find, {})
 vim.keymap.set("n", "<leader>fm", builtin.marks, {})
 vim.keymap.set("n", "<leader>fr", builtin.lsp_references, {})
 
+-- litee-calltree
+vim.keymap.set("n", "<leader>fc", vim.lsp.buf.incoming_calls, {})
+
 -- easy save
 keymap("n", "<leader>w", ":w<CR>", opts)
 

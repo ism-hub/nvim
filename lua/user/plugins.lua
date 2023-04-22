@@ -109,6 +109,10 @@ return packer.startup(function(use)
 
 	use("chentoast/marks.nvim")
 
+	-- call-tree
+	use("ldelossa/litee.nvim")
+	use("ldelossa/litee-calltree.nvim")
+
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
