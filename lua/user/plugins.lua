@@ -85,5 +85,13 @@ require("lazy").setup({
 	-- call-tree
 	"ldelossa/litee.nvim",
 	"ldelossa/litee-calltree.nvim",
-})
 
+	-- rust
+	"simrat39/rust-tools.nvim",
+
+	-- Debugging
+	"nvim-lua/plenary.nvim",
+	"mfussenegger/nvim-dap",
+	"theHamsta/nvim-dap-virtual-text",
+	"rcarriga/nvim-dap-ui",
+})
