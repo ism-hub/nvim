@@ -11,6 +11,7 @@ telescope.setup {
     prompt_prefix = " ",
     selection_caret = " ",
     path_display = { "smart" },
+    cache_picker = {num_pickers = 8},
 
     mappings = {
       i = {

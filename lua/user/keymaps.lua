@@ -51,7 +51,9 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 vim.keymap.set("n", "<leader>f/", builtin.current_buffer_fuzzy_find, {})
 vim.keymap.set("n", "<leader>fm", builtin.marks, {})
-vim.keymap.set("n", "<leader>fr", builtin.lsp_references, {})
+vim.keymap.set("n", "<leader>fr", builtin.resume, {})
+vim.keymap.set("n", "<leader>fj", builtin.jumplist, {})
+vim.keymap.set("n", "<leader>fp", builtin.pickers, {})
 
 -- litee-calltree
 vim.keymap.set("n", "<leader>fc", vim.lsp.buf.incoming_calls, {})
