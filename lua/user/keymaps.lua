@@ -61,6 +61,10 @@ vim.keymap.set("n", "<leader>fc", vim.lsp.buf.incoming_calls, {})
 -- easy save
 keymap("n", "<leader>w", ":w<CR>", opts)
 
+-- scrolling
+keymap("n", "<C-e>", "5<C-e>", opts)
+keymap("n", "<C-y>", "5<C-y>", opts)
+
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)
