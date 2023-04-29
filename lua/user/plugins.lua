@@ -63,11 +63,11 @@ require("lazy").setup({
 	-- git
 	"lewis6991/gitsigns.nvim",
 	-- nvim tree
-	"kyazdani42/nvim-web-devicons",
-	"kyazdani42/nvim-tree.lua",
+	"nvim-tree/nvim-web-devicons",
+	"nvim-tree/nvim-tree.lua",
 	-- bufferline
 	--use("akinsho/bufferline.nvim")
-	{ "akinsho/bufferline.nvim", version = "v2.*", dependencies = "kyazdani42/nvim-web-devicons" },
+	{ "akinsho/bufferline.nvim" },
 	"moll/vim-bbye",
 	-- copy to system clipboard via terminal
 	{ "ojroques/nvim-osc52" },
@@ -95,6 +95,8 @@ require("lazy").setup({
 	"theHamsta/nvim-dap-virtual-text",
 	"rcarriga/nvim-dap-ui",
 
-    -- folding
-    {"kevinhwang91/nvim-ufo", dependencies = {"kevinhwang91/promise-async"}}
+	-- folding
+	{ "kevinhwang91/nvim-ufo", dependencies = { "kevinhwang91/promise-async" } },
+
+	--[[ "junegunn/goyo.vim", ]]
 })

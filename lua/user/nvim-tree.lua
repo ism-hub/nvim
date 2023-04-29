@@ -11,4 +11,12 @@ local function my_on_attach(bufnr)
 	vim.keymap.set("n", "<C-x>", api.node.open.horizontal, opts("Open: Horizontal Split"))
 end
 
-require("nvim-tree").setup({ on_attach = my_on_attach })
+require("nvim-tree").setup({
+	on_attach = my_on_attach,
+	view = {
+		preserve_window_proportions = true,
+		float = {
+			enable = true,
+		},
+	},
+})
