@@ -57,6 +57,9 @@ vim.keymap.set("n", "<leader>fm", builtin.marks, {})
 vim.keymap.set("n", "<leader>fr", builtin.resume, {})
 vim.keymap.set("n", "<leader>fj", builtin.jumplist, {})
 vim.keymap.set("n", "<leader>fp", builtin.pickers, {})
+vim.keymap.set("n", "<leader>fo", function()
+	builtin.oldfiles({ only_cwd = true })
+end, {})
 
 -- litee-calltree
 vim.keymap.set("n", "<leader>fc", vim.lsp.buf.incoming_calls, {})
