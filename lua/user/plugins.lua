@@ -64,7 +64,16 @@ require("lazy").setup({
 	"lewis6991/gitsigns.nvim",
 	-- nvim tree
 	"nvim-tree/nvim-web-devicons",
-	"nvim-tree/nvim-tree.lua",
+	--[[ "nvim-tree/nvim-tree.lua", ]]
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v2.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		},
+	},
 	-- bufferline
 	--use("akinsho/bufferline.nvim")
 	{ "akinsho/bufferline.nvim" },
