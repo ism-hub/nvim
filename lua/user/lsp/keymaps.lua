@@ -1,10 +1,29 @@
 --[[ When a server attaches himself to a buffer make lsp api available ]]
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set("n", "gl", vim.diagnostic.open_float)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
+local wk = require("which-key")
+wk.register({
+	["g"] = { name = "+lsp" },
+	["gl"] = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Show Line Diagnostic" },
+	["gb"] = { "<cmd>Lspsaga show_buf_diagnostics<CR>", "Show Buf Diagnostic" },
+	["gw"] = { "<cmd>Lspsaga show_workspace_diagnostics<CR>", "Show Workspace Diagnostic" },
+	["[e"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Prev Diagnostic" },
+	["]e"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Next Diagnostic" },
+	["[E"] = {
+		function()
+			require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+		end,
+		"Prev Diagnostic",
+	},
+	["]E"] = {
+		function()
+			require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+		end,
+		"Next Diagnostic",
+	},
+	["]d"] = { vim.diagnostic.goto_next, "Next Diagnostic" },
+	["[d"] = { vim.diagnostic.goto_prev, "Next Diagnostic" },
+})
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -16,28 +35,39 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- Buffer local mappings.
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
-		local opts = { buffer = ev.buf }
-		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-		vim.keymap.set("n", "gk", vim.lsp.buf.signature_help, opts)
-		vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
-		vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
-		vim.keymap.set("n", "<leader>wl", function()
-			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-		end, opts)
-		vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
-		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-		vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-		vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, opts)
-		--[[ require'telescope.builtin'.lsp_references ]]
-		--[[ vim.keymap.set("n", "<space>f", function() ]]
-		--[[ 	vim.lsp.buf.format({ async = true }) ]]
-		--[[ end, opts) ]]
-		vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({async = false})' ]])
-		vim.api.nvim_set_keymap("n", "<leader>s", ":Format<CR>:w<CR>", { noremap = true })
+		local opts = { buffer = ev.buf, noremap = true }
+		wk.register({
+			["gD"] = { vim.lsp.buf.declaration, "Deceleration" },
+			["gd"] = { vim.lsp.buf.definition, "Deceleration" },
+			["gi"] = { vim.lsp.buf.implementation, "Implementation" },
+			["gk"] = { vim.lsp.buf.signature_help, "Signature" },
+			["gr"] = { require("telescope.builtin").lsp_references, "References" },
+			["<K>"] = { "<cmd>Lspsaga hover_doc<CR>", "Lsp hover" },
+		}, opts)
 
+		wk.register({
+			["<leader>w"] = { name = "+lsp-workspace" },
+			["<leader>wa"] = { vim.lsp.buf.add_workspace_folder, "Add workspace" },
+			["<leader>wr"] = { vim.lsp.buf.remove_workspace_folder, "Remove workspace" },
+			["<leader>wl"] = {
+				function()
+					print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+				end,
+				"List workspaces",
+			},
+		}, opts)
+
+		vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({async = false})' ]])
+		wk.register({
+			["<leader>D"] = { vim.lsp.buf.type_definition, "Lsp type-definition" },
+			["<leader>r"] = { name = "lsp-rename" },
+			["<leader>rn"] = { vim.lsp.buf.rename, "Lsp Rename" },
+			["<leader>s"] = { "<cmd>:Format<CR>:w<CR>", "Lsp Format & Save" },
+			["<leader>q"] = { vim.diagnostic.setloclist, "Set loclist" },
+			["<leader>a"] = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
+			["<C-space>"] = { "Rust Hover-Actions" },
+		}, opts)
+		--[[ vim.api.nvim_set_keymap("n", "<leader>s", ":Format<CR>:w<CR>", { noremap = true }) ]]
 		local client = vim.lsp.get_client_by_id(ev.data.client_id)
 		if client.server_capabilities.documentHighlightProvider then
 			vim.cmd([[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]])
@@ -46,46 +76,82 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 
 		-- debugging (dap)
-		vim.keymap.set("n", "<leader>dc", function()
-			require("dap").continue()
-		end)
-		vim.keymap.set("n", "<leader>dn", function()
-			require("dap").step_over()
-		end)
-		vim.keymap.set("n", "<leader>di", function()
-			require("dap").step_into()
-		end)
-		vim.keymap.set("n", "<leader>do", function()
-			require("dap").step_out()
-		end)
-		vim.keymap.set("n", "<leader>db", function()
-			require("dap").toggle_breakpoint()
-		end)
-		--[[ vim.keymap.set("n", "<Leader>dB", function() ]]
-		--[[ 	require("dap").set_breakpoint() ]]
-		--[[ end) ]]
-		vim.keymap.set("n", "<Leader>dL", function()
-			require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-		end)
-		vim.keymap.set("n", "<Leader>dr", function()
-			require("dap").repl.open()
-		end)
-		vim.keymap.set("n", "<Leader>dl", function()
-			require("dap").run_last()
-		end)
-		vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
-			require("dap.ui.widgets").hover()
-		end)
-		vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
-			require("dap.ui.widgets").preview()
-		end)
-		vim.keymap.set("n", "<Leader>df", function()
-			local widgets = require("dap.ui.widgets")
-			widgets.centered_float(widgets.frames)
-		end)
-		vim.keymap.set("n", "<Leader>ds", function()
-			local widgets = require("dap.ui.widgets")
-			widgets.centered_float(widgets.scopes)
-		end)
+		wk.register({
+			["<leader>d"] = { name = "+debug" },
+			["<leader>dc"] = {
+				function()
+					require("dap").continue()
+				end,
+				"Continue",
+			},
+			["<leader>dn"] = {
+				function()
+					require("dap").step_over()
+				end,
+				"Step Over",
+			},
+			["<leader>di"] = {
+				function()
+					require("dap").step_into()
+				end,
+				"Step Into",
+			},
+			["<leader>do"] = {
+				function()
+					require("dap").step_out()
+				end,
+				"Step Out",
+			},
+			["<leader>db"] = {
+				function()
+					require("dap").toggle_breakpoint()
+				end,
+				"Breakpoint",
+			},
+			["<leader>dL"] = {
+				function()
+					require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+				end,
+				"Breakpoint With Msg",
+			},
+			["<leader>dr"] = {
+				function()
+					require("dap").repl.open()
+				end,
+				"REPL",
+			},
+			["<leader>dl"] = {
+				function()
+					require("dap").run_last()
+				end,
+				"Run Last",
+			},
+			["<leader>dh"] = {
+				function()
+					require("dap.ui.widgets").hover()
+				end,
+				"Hover",
+			},
+			["<leader>dp"] = {
+				function()
+					require("dap.ui.widgets").preview()
+				end,
+				"Preview",
+			},
+			["<leader>df"] = {
+				function()
+					local widgets = require("dap.ui.widgets")
+					widgets.centered_float(widgets.frames)
+				end,
+				"Frames",
+			},
+			["<leader>ds"] = {
+				function()
+					local widgets = require("dap.ui.widgets")
+					widgets.centered_float(widgets.scopes)
+				end,
+				"Scopes",
+			},
+		}, opts)
 	end,
 })

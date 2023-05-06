@@ -3,6 +3,7 @@ local term_opts = { silent = true }
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
+local wk = require("which-key")
 
 -- Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
@@ -25,7 +26,14 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Open explorer
-keymap("n", "<leader>e", ":NeoTreeRevealToggle<CR>", opts)
+wk.register({
+	["<leader>e"] = { "<cmd>NeoTreeRevealToggle<CR>", "Explorer" },
+}, opts)
+
+-- Open Symbol Outline
+wk.register({
+	["<leader>o"] = { "<cmd>SymbolsOutlineCR>", "Outline" },
+}, opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -45,24 +53,35 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Telescope
 local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-vim.keymap.set("n", "<leader>fg", require("telescope").extensions.live_grep_args.live_grep_args, {})
-vim.keymap.set("n", "<leader>fb", function()
-	builtin.live_grep({ grep_open_files = true })
-end, {})
-vim.keymap.set("n", "<leader>fB", builtin.buffers, {})
-vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
-vim.keymap.set("n", "<leader>f/", builtin.current_buffer_fuzzy_find, {})
-vim.keymap.set("n", "<leader>fm", builtin.marks, {})
-vim.keymap.set("n", "<leader>fr", builtin.resume, {})
-vim.keymap.set("n", "<leader>fj", builtin.jumplist, {})
-vim.keymap.set("n", "<leader>fp", builtin.pickers, {})
-vim.keymap.set("n", "<leader>fo", function()
-	builtin.oldfiles({ only_cwd = true })
-end, {})
+wk.register({
+	["<leader>f"] = { name = "+search" },
+	["<leader>ff"] = { builtin.find_files, "Find File" },
+	["<leader>fg"] = { require("telescope").extensions.live_grep_args.live_grep_args, "Grep Files" },
+	["<leader>fb"] = {
+		function()
+			builtin.live_grep({ grep_open_files = true })
+		end,
+		"Grep In Buffers",
+	},
+	["<leader>fB"] = { builtin.buffers, "Find Buffer" },
+	["<leader>fh"] = { builtin.help_tags, "Find Help" },
+	["<leader>f/"] = { builtin.current_buffer_fuzzy_find, "Find In Buffer" },
+	["<leader>fm"] = { builtin.marks, "Find Mark" },
+	["<leader>fr"] = { builtin.resume, "Resume Last Search" },
+	["<leader>fR"] = { builtin.resume, "Last Search" },
+	["<leader>fj"] = { builtin.jumplist, "Find Jump" },
+	["<leader>fo"] = {
+		function()
+			builtin.oldfiles({ only_cwd = true })
+		end,
+		"Open Recent File",
+	},
+})
 
 -- litee-calltree
-vim.keymap.set("n", "<leader>fc", vim.lsp.buf.incoming_calls, {})
+wk.register({
+	["<leader>fc"] = { vim.lsp.buf.incoming_calls, "Call Hierarchy" },
+})
 
 -- easy save
 keymap("n", "<leader>w", ":w<CR>", opts)
