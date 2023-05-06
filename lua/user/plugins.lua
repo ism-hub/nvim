@@ -122,4 +122,5 @@ require("lazy").setup({
 		},
 
     },
+	"simrat39/symbols-outline.nvim",
 })
