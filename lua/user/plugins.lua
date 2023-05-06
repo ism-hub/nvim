@@ -123,4 +123,11 @@ require("lazy").setup({
 
     },
 	"simrat39/symbols-outline.nvim",
+	{
+		"SmiteshP/nvim-navbuddy",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+			"MunifTanjim/nui.nvim",
+		},
+	},
 })

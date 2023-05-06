@@ -32,7 +32,7 @@ wk.register({
 
 -- Open Symbol Outline
 wk.register({
-	["<leader>o"] = { "<cmd>SymbolsOutlineCR>", "Outline" },
+	["<leader>o"] = { "<cmd>Navbuddy<CR>", "Outline" },
 }, opts)
 
 -- Resize with arrows
