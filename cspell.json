@@ -1,0 +1,17 @@
+{
+  "version": "0.2",
+  "words": [
+    "builtins",
+    "builtins",
+    "postprocess",
+    "treesitter",
+    "keymaps",
+    "Lspsaga",
+    "oldfiles",
+    "navbuddy",
+    "nvim"
+  ],
+  "flagWords": [],
+  "language": "en",
+  "allowCompoundWords": true
+}
