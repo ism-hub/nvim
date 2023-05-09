@@ -20,6 +20,7 @@ require("lazy").setup({
 	-- Colorschemes
 	"lunarvim/colorschemes", -- bunch of colorschemes we can use
 	"folke/tokyonight.nvim",
+	"rebelot/kanagawa.nvim",
 	-- cmp plugins
 	"hrsh7th/nvim-cmp", -- The completion plugin
 	"hrsh7th/cmp-buffer", -- buffer completions
@@ -106,10 +107,8 @@ require("lazy").setup({
 
 	-- folding
 	{ "kevinhwang91/nvim-ufo", dependencies = { "kevinhwang91/promise-async" } },
-
-	--[[ "junegunn/goyo.vim", ]]
-    {
-
+	-- nice lsp ui (ui for code actions and more)
+	{
 		"glepnir/lspsaga.nvim",
 		event = "LspAttach",
 		config = function()
@@ -120,9 +119,8 @@ require("lazy").setup({
 			--Please make sure you install markdown and markdown_inline parser
 			{ "nvim-treesitter/nvim-treesitter" },
 		},
-
-    },
-	"simrat39/symbols-outline.nvim",
+	},
+	-- outline
 	{
 		"SmiteshP/nvim-navbuddy",
 		dependencies = {
@@ -130,4 +128,6 @@ require("lazy").setup({
 			"MunifTanjim/nui.nvim",
 		},
 	},
+	-- session
+	"rmagatti/auto-session",
 })
