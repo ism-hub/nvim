@@ -130,4 +130,6 @@ require("lazy").setup({
 	},
 	-- session
 	"rmagatti/auto-session",
+	-- big file
+	"LunarVim/bigfile.nvim",
 })
