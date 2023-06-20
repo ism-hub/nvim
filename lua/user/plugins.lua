@@ -132,4 +132,6 @@ require("lazy").setup({
 	"rmagatti/auto-session",
 	-- big file
 	"LunarVim/bigfile.nvim",
+	-- vs-code color-scheme
+	"Mofiqul/vscode.nvim",
 })
