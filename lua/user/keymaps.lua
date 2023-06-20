@@ -57,6 +57,7 @@ wk.register({
 	["<leader>f"] = { name = "+search" },
 	["<leader>ff"] = { builtin.find_files, "Find File" },
 	["<leader>fg"] = { require("telescope").extensions.live_grep_args.live_grep_args, "Grep Files" },
+	["<leader>fG"] = { require("telescope-live-grep-args.shortcuts").grep_word_under_cursor, "Grep Current Word" },
 	["<leader>fb"] = {
 		function()
 			builtin.live_grep({ grep_open_files = true })
