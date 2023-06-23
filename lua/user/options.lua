@@ -36,6 +36,7 @@ vim.opt.sidescrolloff = 8			--
 vim.opt.guifont = "monospace:h17"		-- the font used in graphical neovim applications
 vim.opt.shortmess:append "c"			--
 vim.opt.completeopt = {'menu', 'menuone','noinsert' ,'noselect'}
+vim.opt.tw = 500
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]			-- treats '-' in a word as one word, so if we do <dw> on "asd-fgh" we  will delete the whole word and not just "asd"
 vim.cmd [[set formatoptions-=cro]] 		--TODO: this doesn't seems to work (what it even suppose to do) 
