@@ -136,4 +136,9 @@ require("lazy").setup({
 	-- vs-code color-scheme
 	"Mofiqul/vscode.nvim",
 	"HiPhish/nvim-ts-rainbow2",
+	-- startup screen
+	{
+		"goolord/alpha-nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
 })
