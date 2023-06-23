@@ -77,7 +77,7 @@ wk.register({
 		end,
 		"Open Recent File",
 	},
-	["<leader>fs"] = { require("auto-session.session-lens").search_session, "Search Session" },
+	["<leader>fs"] = { "<cmd>Telescope persisted<cr>", "Search Session" },
 })
 
 -- litee-calltree

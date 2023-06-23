@@ -129,7 +129,8 @@ require("lazy").setup({
 		},
 	},
 	-- session
-	"rmagatti/auto-session",
+	-- "rmagatti/auto-session",
+	"olimorris/persisted.nvim",
 	-- big file
 	"LunarVim/bigfile.nvim",
 	-- vs-code color-scheme
