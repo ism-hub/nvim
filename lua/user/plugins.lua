@@ -134,4 +134,5 @@ require("lazy").setup({
 	"LunarVim/bigfile.nvim",
 	-- vs-code color-scheme
 	"Mofiqul/vscode.nvim",
+	"HiPhish/nvim-ts-rainbow2",
 })
