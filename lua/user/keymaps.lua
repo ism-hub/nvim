@@ -42,10 +42,17 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+-- keymap("n", "<S-l>", ":bnext<CR>", opts)
+-- keymap("n", "<S-h>", ":bprevious<CR>", opts)
 --[[ keymap("n", "<C-x>", ":bdelete!<CR>", opts) ]]
-vim.keymap.set("n", "<C-x>", require("user.my_close").close_windows_before_buffers, opts)
+-- vim.keymap.set("n", "<C-x>", require("user.my_close").close_windows_before_buffers, opts)
+vim.keymap.set("n", "<C-x>", "<cmd>:close<CR>", opts)
+vim.keymap.set("n", "<C-s>", "<cmd>:vsp | b#<CR>", opts) -- v-split last buffer
+-- vim.keymap.set("n", "<C-S>", "<cmd>:sbuffer | b#<CR>", opts) -- s-split last buffer
+
+-- Navigate tabs
+keymap("n", "<S-l>", ":tabn<CR>", opts)
+keymap("n", "<S-h>", ":tabp<CR>", opts)
 
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
@@ -65,6 +72,7 @@ wk.register({
 		"Grep In Buffers",
 	},
 	["<leader>fB"] = { builtin.buffers, "Find Buffer" },
+	["<leader>ft"] = { require("telescope-tabs").list_tabs, "Find Tab" },
 	["<leader>fh"] = { builtin.help_tags, "Find Help" },
 	["<leader>f/"] = { builtin.current_buffer_fuzzy_find, "Find In Buffer" },
 	["<leader>fm"] = { builtin.marks, "Find Mark" },
