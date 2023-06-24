@@ -85,6 +85,29 @@ wk.register({
 	["<leader>fc"] = { vim.lsp.buf.incoming_calls, "Call Hierarchy" },
 })
 
+-- better yank/past
+vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)") -- Preserve cursor position on yank
+vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+vim.keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)")
+vim.keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")
+
+vim.keymap.set("n", "]p", "<Plug>(YankyPutIndentAfterLinewise)")
+vim.keymap.set("n", "[p", "<Plug>(YankyPutIndentBeforeLinewise)")
+vim.keymap.set("n", "]P", "<Plug>(YankyPutAfterCharwiseJoined)")
+vim.keymap.set("n", "[P", "<Plug>(YankyPutBeforeCharwiseJoined)")
+
+vim.keymap.set("n", ">p", "<Plug>(YankyPutIndentAfterShiftRight)")
+vim.keymap.set("n", "<p", "<Plug>(YankyPutIndentAfterShiftLeft)")
+vim.keymap.set("n", ">P", "<Plug>(YankyPutIndentBeforeShiftRight)")
+vim.keymap.set("n", "<P", "<Plug>(YankyPutIndentBeforeShiftLeft)")
+
+vim.keymap.set("n", "=p", "<Plug>(YankyPutAfterFilter)")
+vim.keymap.set("n", "=P", "<Plug>(YankyPutBeforeFilter)")
+keymap("v", "p", '"_dP"', opts) -- holds on what we just pasted (in visual mode if we paste something over something2 it will copy something2 so the next time we will use past it will past something2)
+
 -- easy save
 keymap("n", "<leader>w", ":w<CR>", opts)
 
@@ -104,7 +127,6 @@ keymap("v", ">", ">gv", opts)
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
-keymap("v", "p", '"_dP"', opts) -- holds on what we just pasted (in visual mode if we paste something over something2 it will copy something2 so the next time we will use past it will past something2)
 
 -- Visual Block --
 -- Move text up and down

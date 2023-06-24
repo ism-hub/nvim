@@ -142,4 +142,5 @@ require("lazy").setup({
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 	"sindrets/diffview.nvim",
+	"gbprod/yanky.nvim",
 })
