@@ -40,3 +40,10 @@ vim.opt.tw = 500
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]			-- treats '-' in a word as one word, so if we do <dw> on "asd-fgh" we  will delete the whole word and not just "asd"
 vim.cmd [[set formatoptions-=cro]] 		--TODO: this doesn't seems to work (what it even suppose to do) 
+
+-- highlighing (must be b4 we load plugins (cuz that plugin doesn't have setup..)) (plugin - RRethy/vim-illuminate)
+vim.cmd([[
+hi def IlluminatedWordText guifg=none guibg=Grey30
+hi def IlluminatedWordRead guifg=none guibg=Grey30
+hi def IlluminatedWordWrite guifg=none guibg=Grey30
+]])
