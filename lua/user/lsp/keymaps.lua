@@ -68,12 +68,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			["<C-space>"] = { "Rust Hover-Actions" },
 		}, opts)
 		--[[ vim.api.nvim_set_keymap("n", "<leader>s", ":Format<CR>:w<CR>", { noremap = true }) ]]
-		local client = vim.lsp.get_client_by_id(ev.data.client_id)
-		if client.server_capabilities.documentHighlightProvider then
-			vim.cmd([[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]])
-			vim.cmd([[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]])
-			vim.cmd([[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]])
-		end
+		-- local client = vim.lsp.get_client_by_id(ev.data.client_id)
+		-- if client.server_capabilities.documentHighlightProvider then
+		-- 	vim.cmd([[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]])
+		-- 	vim.cmd([[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]])
+		-- 	vim.cmd([[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]])
+		-- end
 
 		-- debugging (dap)
 		wk.register({

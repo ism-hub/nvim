@@ -141,8 +141,13 @@ require("lazy").setup({
 		"goolord/alpha-nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
+	-- tabs
 	"nanozuki/tabby.nvim",
 	"LukasPietzschmann/telescope-tabs",
+	-- diff
 	"sindrets/diffview.nvim",
+	-- yank ring
 	"gbprod/yanky.nvim",
+	-- lsp highlight (no need for setup call)
+	"RRethy/vim-illuminate",
 })
