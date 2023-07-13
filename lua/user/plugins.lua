@@ -13,24 +13,24 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	"folke/which-key.nvim",
-	{ "folke/neoconf.nvim", cmd = "Neoconf" },
+	-- { "folke/neoconf.nvim", cmd = "Neoconf" },
 	"folke/neodev.nvim",
-	"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
+	-- "nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
 	"nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
 	-- Colorschemes
-	"lunarvim/colorschemes", -- bunch of colorschemes we can use
-	"folke/tokyonight.nvim",
+	-- "lunarvim/colorschemes", -- bunch of colorschemes we can use
+	-- "folke/tokyonight.nvim",
 	"rebelot/kanagawa.nvim",
 	-- cmp plugins
-	"hrsh7th/nvim-cmp", -- The completion plugin
-	"hrsh7th/cmp-buffer", -- buffer completions
-	"hrsh7th/cmp-path", -- path completions
-	"hrsh7th/cmp-cmdline", -- cmdline completions
-	"saadparwaiz1/cmp_luasnip", -- snippet completions
-	"hrsh7th/cmp-nvim-lsp",
+	-- "hrsh7th/nvim-cmp", -- The completion plugin
+	-- "hrsh7th/cmp-buffer", -- buffer completions
+	-- "hrsh7th/cmp-path", -- path completions
+	-- "hrsh7th/cmp-cmdline", -- cmdline completions
+	-- "saadparwaiz1/cmp_luasnip", -- snippet completions
+	-- "hrsh7th/cmp-nvim-lsp",
 	-- snippets
-	"L3MON4D3/LuaSnip", --snippet engine
-	"rafamadriz/friendly-snippets", -- a bunch of snippets to use
+	-- "L3MON4D3/LuaSnip", --snippet engine
+	-- "rafamadriz/friendly-snippets", -- a bunch of snippets to use
 	-- LSP
 	"neovim/nvim-lspconfig", -- enable LSP
 	--[[ use("williamboman/nvim-lsp-installer") -- simple to use language server ]]
@@ -57,7 +57,7 @@ require("lazy").setup({
 		build = ":TSUpdate",
 	},
 	-- Autopair
-	"windwp/nvim-autopairs",
+	-- "windwp/nvim-autopairs",
 	-- comments
 	"numToStr/Comment.nvim",
 	"JoosepAlviste/nvim-ts-context-commentstring", -- nvim Treesitter context comment string (in html file we can have js html ext..)
@@ -74,6 +74,10 @@ require("lazy").setup({
 			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
 		},
+	},
+	{
+		"ms-jpq/coq_nvim",
+		branch = "coq",
 	},
 	-- bufferline
 	--use("akinsho/bufferline.nvim")
@@ -110,10 +114,6 @@ require("lazy").setup({
 	-- nice lsp ui (ui for code actions and more)
 	{
 		"glepnir/lspsaga.nvim",
-		--[[ event = "LspAttach", ]]
-		--[[ config = function() ]]
-		--[[ 	require("lspsaga").setup({}) ]]
-		--[[ end, ]]
 		dependencies = {
 			{ "nvim-tree/nvim-web-devicons" },
 			--Please make sure you install markdown and markdown_inline parser
