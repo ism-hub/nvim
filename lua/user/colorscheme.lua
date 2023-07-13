@@ -10,6 +10,7 @@
 
 -- kanagawa
 vim.cmd("colorscheme kanagawa")
+vim.cmd("hi Visual guibg=Grey55")
 
 -- tokyonight
 -- vim.g.tokyonight_style = "night"
