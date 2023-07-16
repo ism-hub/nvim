@@ -27,12 +27,12 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Open explorer
 wk.register({
-	["<leader>e"] = { "<cmd>NeoTreeRevealToggle<CR>", "Explorer" },
+    ["<leader>e"] = { "<cmd>Neotree toggle=true<CR>", "Explorer" },
 }, opts)
 
 -- Open Symbol Outline
 wk.register({
-	["<leader>o"] = { "<cmd>Navbuddy<CR>", "Outline" },
+    ["<leader>o"] = { "<cmd>Navbuddy<CR>", "Outline" },
 }, opts)
 
 -- Resize with arrows
@@ -61,36 +61,36 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 -- Telescope
 local builtin = require("telescope.builtin")
 wk.register({
-	["<leader>f"] = { name = "+search" },
-	["<leader>ff"] = { builtin.find_files, "Find File" },
-	["<leader>fg"] = { require("telescope").extensions.live_grep_args.live_grep_args, "Grep Files" },
-	["<leader>fG"] = { require("telescope-live-grep-args.shortcuts").grep_word_under_cursor, "Grep Current Word" },
-	["<leader>fb"] = {
-		function()
-			builtin.live_grep({ grep_open_files = true })
-		end,
-		"Grep In Buffers",
-	},
-	["<leader>fB"] = { builtin.buffers, "Find Buffer" },
-	["<leader>ft"] = { require("telescope-tabs").list_tabs, "Find Tab" },
-	["<leader>fh"] = { builtin.help_tags, "Find Help" },
-	["<leader>f/"] = { builtin.current_buffer_fuzzy_find, "Find In Buffer" },
-	["<leader>fm"] = { builtin.marks, "Find Mark" },
-	["<leader>fr"] = { builtin.resume, "Resume Last Search" },
-	["<leader>fR"] = { builtin.pickers, "Last Search" },
-	["<leader>fj"] = { builtin.jumplist, "Find Jump" },
-	["<leader>fo"] = {
-		function()
-			builtin.oldfiles({ only_cwd = true })
-		end,
-		"Open Recent File",
-	},
-	["<leader>fs"] = { "<cmd>Telescope persisted<cr>", "Search Session" },
+    ["<leader>f"] = { name = "+search" },
+    ["<leader>ff"] = { builtin.find_files, "Find File" },
+    ["<leader>fg"] = { require("telescope").extensions.live_grep_args.live_grep_args, "Grep Files" },
+    ["<leader>fG"] = { require("telescope-live-grep-args.shortcuts").grep_word_under_cursor, "Grep Current Word" },
+    ["<leader>fb"] = {
+        function()
+            builtin.live_grep({ grep_open_files = true })
+        end,
+        "Grep In Buffers",
+    },
+    ["<leader>fB"] = { builtin.buffers, "Find Buffer" },
+    ["<leader>ft"] = { require("telescope-tabs").list_tabs, "Find Tab" },
+    ["<leader>fh"] = { builtin.help_tags, "Find Help" },
+    ["<leader>f/"] = { builtin.current_buffer_fuzzy_find, "Find In Buffer" },
+    ["<leader>fm"] = { builtin.marks, "Find Mark" },
+    ["<leader>fr"] = { builtin.resume, "Resume Last Search" },
+    ["<leader>fR"] = { builtin.pickers, "Last Search" },
+    ["<leader>fj"] = { builtin.jumplist, "Find Jump" },
+    ["<leader>fo"] = {
+        function()
+            builtin.oldfiles({ only_cwd = true })
+        end,
+        "Open Recent File",
+    },
+    ["<leader>fs"] = { "<cmd>Telescope persisted<cr>", "Search Session" },
 })
 
 -- litee-calltree
 wk.register({
-	["<leader>fc"] = { vim.lsp.buf.incoming_calls, "Call Hierarchy" },
+    ["<leader>fc"] = { vim.lsp.buf.incoming_calls, "Call Hierarchy" },
 })
 
 -- better yank/past
@@ -145,10 +145,10 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Terminal --
 wk.register({
-	["<C-t>"] = { "<cmd>Lspsaga term_toggle<CR>", "Toggle Term" },
+    ["<C-t>"] = { "<cmd>Lspsaga term_toggle<CR>", "Toggle Term" },
 }, { mode = "t" })
 wk.register({
-	["<C-t>"] = { "<cmd>Lspsaga term_toggle<CR>", "Toggle Term" },
+    ["<C-t>"] = { "<cmd>Lspsaga term_toggle<CR>", "Toggle Term" },
 })
 -- Better terminal navigation
 vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
