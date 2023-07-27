@@ -22,11 +22,11 @@
 --[[ }) ]]
 require("neo-tree").setup({
 	filesystem = {
-		follow_current_file = true,
+		follow_current_file = {enabled = true},
 		use_libuv_file_watcher = true,
 	},
 	buffers = {
-		follow_current_file = true,
+		follow_current_file = {enabled = true},
 	},
 	--[[ sources = { ]]
 	--[[ 	"filesystem", ]]

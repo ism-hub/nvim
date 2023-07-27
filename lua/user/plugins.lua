@@ -117,6 +117,8 @@ require("lazy").setup({
 
     -- folding
     { "kevinhwang91/nvim-ufo", dependencies = { "kevinhwang91/promise-async" } },
+    -- floating term
+    'voldikss/vim-floaterm',
     -- nice lsp ui (ui for code actions and more)
     {
         "glepnir/lspsaga.nvim",

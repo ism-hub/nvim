@@ -145,10 +145,19 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Terminal --
 wk.register({
-    ["<C-t>"] = { "<cmd>Lspsaga term_toggle<CR>", "Toggle Term" },
+    ["<C-t>"] = { "<cmd>FloatermToggle<CR>", "Toggle Term" },
 }, { mode = "t" })
 wk.register({
-    ["<C-t>"] = { "<cmd>Lspsaga term_toggle<CR>", "Toggle Term" },
+    ["<C-t>"] = { "<cmd>FloatermToggle<CR>", "Toggle Term" },
+})
+wk.register({
+    ["<leader>tt"] = { "<cmd>FloatermNew<CR>", "New Term" },
+})
+wk.register({
+    ["<leader>tn"] = { "<cmd>FloatermNext<CR>", "Next Term" },
+})
+wk.register({
+    ["<leader>tp"] = { "<cmd>FloatermPrev<CR>", "Prev Term" },
 })
 -- Better terminal navigation
 vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
