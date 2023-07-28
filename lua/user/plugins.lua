@@ -13,33 +13,16 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     "folke/which-key.nvim",
-    -- { "folke/neoconf.nvim", cmd = "Neoconf" },
-    "folke/neodev.nvim",
-    -- "nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
+    -- "folke/neodev.nvim",
     "nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
     -- Colorschemes
-    -- "lunarvim/colorschemes", -- bunch of colorschemes we can use
-    -- "folke/tokyonight.nvim",
     "rebelot/kanagawa.nvim",
     -- cmp plugins
-    -- "hrsh7th/nvim-cmp", -- The completion plugin
-    -- "hrsh7th/cmp-buffer", -- buffer completions
-    -- "hrsh7th/cmp-path", -- path completions
-    -- "hrsh7th/cmp-cmdline", -- cmdline completions
-    -- "saadparwaiz1/cmp_luasnip", -- snippet completions
-    -- "hrsh7th/cmp-nvim-lsp",
-    -- snippets
-    -- "L3MON4D3/LuaSnip", --snippet engine
-    -- "rafamadriz/friendly-snippets", -- a bunch of snippets to use
     -- LSP
-    "neovim/nvim-lspconfig", -- enable LSP
-    --[[ use("williamboman/nvim-lsp-installer") -- simple to use language server ]]
     {
-        "williamboman/mason.nvim",
-        run = ":MasonUpdate", -- :MasonUpdate updates registry contents
-        "williamboman/mason-lspconfig.nvim",
+        'neoclide/coc.nvim',
+        branch = 'release',
     },
-    -- "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
     -- Telescope
     --[[ use("nvim-telescope/telescope.nvim") ]]
     {
@@ -76,25 +59,14 @@ require("lazy").setup({
         },
     },
     -- completion
-    {
-        "ms-jpq/coq_nvim",
-        branch = "coq",
-    },
     -- 9000+ Snippets
-    {
-        'ms-jpq/coq.artifacts',
-        branch = "artifacts",
-    },
-    -- bufferline
-    --use("akinsho/bufferline.nvim")
-    { "akinsho/bufferline.nvim" },
     "moll/vim-bbye",
     -- copy to system clipboard via terminal
     { "ojroques/nvim-osc52" },
     -- vim navigation
     "ggandor/lightspeed.nvim",
     -- show signature of functions while typing and the variable im in
-    "ray-x/lsp_signature.nvim",
+    -- "ray-x/lsp_signature.nvim",
     -- git
     "tpope/vim-fugitive",
     -- zoom in/out of window <C-w>m
@@ -103,11 +75,11 @@ require("lazy").setup({
     "chentoast/marks.nvim",
 
     -- call-tree
-    "ldelossa/litee.nvim",
-    "ldelossa/litee-calltree.nvim",
+    -- "ldelossa/litee.nvim",
+    -- "ldelossa/litee-calltree.nvim",
 
     -- rust
-    "simrat39/rust-tools.nvim",
+    -- "simrat39/rust-tools.nvim",
 
     -- Debugging
     "nvim-lua/plenary.nvim",
@@ -120,22 +92,23 @@ require("lazy").setup({
     -- floating term
     'voldikss/vim-floaterm',
     -- nice lsp ui (ui for code actions and more)
-    {
-        "glepnir/lspsaga.nvim",
-        dependencies = {
-            { "nvim-tree/nvim-web-devicons" },
-            --Please make sure you install markdown and markdown_inline parser
-            { "nvim-treesitter/nvim-treesitter" },
-        },
-    },
+    -- {
+    --     "glepnir/lspsaga.nvim",
+    --     dependencies = {
+    --         { "nvim-tree/nvim-web-devicons" },
+    --         --Please make sure you install markdown and markdown_inline parser
+    --         { "nvim-treesitter/nvim-treesitter" },
+    --     },
+    -- },
     -- outline
-    {
-        "SmiteshP/nvim-navbuddy",
-        dependencies = {
-            "SmiteshP/nvim-navic",
-            "MunifTanjim/nui.nvim",
-        },
-    },
+    'liuchengxu/vista.vim',
+    -- {
+    --     "SmiteshP/nvim-navbuddy",
+    --     dependencies = {
+    --         "SmiteshP/nvim-navic",
+    --         "MunifTanjim/nui.nvim",
+    --     },
+    -- },
     -- session
     -- "rmagatti/auto-session",
     "olimorris/persisted.nvim",

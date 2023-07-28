@@ -1,0 +1,8 @@
+{
+    "diagnostic.virtualText": true,
+    "diagnostic.virtualTextCurrentLineOnly": false,
+    "diagnostic.checkCurrentLine": true,
+    "diagnostic.virtualTextLevel": "error",
+    "codeLens.enable": true,
+    "suggest.noselect": true
+}

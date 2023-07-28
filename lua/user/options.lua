@@ -50,4 +50,4 @@ hi def IlluminatedWordRead guifg=none guibg=Grey30
 hi def IlluminatedWordWrite guifg=none guibg=Grey30
 ]])
 -- completion coq (notice the recommended = false is for the auto-pairs)
-vim.g.coq_settings = { ["auto_start"] = true, ["keymap.jump_to_mark"] = "<C-b>", keymap = { recommended = false } }
+-- vim.g.coq_settings = { ["auto_start"] = true, ["keymap.jump_to_mark"] = "<C-b>", keymap = { recommended = false } }
