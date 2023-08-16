@@ -145,10 +145,10 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Terminal --
 wk.register({
-    ["<C-t>"] = { "<cmd>FloatermToggle<CR>", "Toggle Term" },
+    ["<C-t>"] = { "<cmd>FloatermToggle<CR><cmd>let g:floaterm_autoinsert = v:true<CR>", "Toggle Term" },
 }, { mode = "t" })
 wk.register({
-    ["<C-t>"] = { "<cmd>FloatermToggle<CR>", "Toggle Term" },
+    ["<C-t>"] = { "<cmd>FloatermToggle<CR><cmd>let g:floaterm_autoinsert = v:true<CR>", "Toggle Term" },
 })
 wk.register({
     ["<leader>tt"] = { "<cmd>FloatermNew<CR>", "New Term" },
