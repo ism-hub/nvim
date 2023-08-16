@@ -166,7 +166,7 @@ keyset("n", "<leader>s", "<cmd>call CocAction('format')<CR>:w<CR>", {})
 -- Add (Neo)Vim's native statusline support
 -- NOTE: Please see `:h coc-status` for integrations with external plugins that
 -- provide custom statusline: lightline.vim, vim-airline
-vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
+-- vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
 
 -- wk.register({
 --     ["<leader>w"] = { name = "+lsp-workspace" },
