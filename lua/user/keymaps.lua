@@ -31,9 +31,9 @@ wk.register({
 }, opts)
 
 -- Open Symbol Outline
-wk.register({
-    ["<leader>o"] = { "<cmd>Navbuddy<CR>", "Outline" },
-}, opts)
+-- wk.register({
+--     ["<leader>o"] = { "<cmd>Navbuddy<CR>", "Outline" },
+-- }, opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -86,6 +86,14 @@ wk.register({
         "Open Recent File",
     },
     ["<leader>fs"] = { "<cmd>Telescope persisted<cr>", "Search Session" },
+})
+
+-- telescope orgfiles
+wk.register({
+    ["<leader>of"] = { function() builtin.find_files({ cwd = vim.g.orgfolder }) end, "Find Org-File" },
+    ["<leader>og"] = { function() require("telescope").extensions.live_grep_args.live_grep_args({ cwd = vim.g.orgfolder }) end,
+        "Grep Org-File" },
+    -- ["<leader>og"] = { require("telescope").extensions.live_grep_args.live_grep_args, "Grep Files" },
 })
 
 -- litee-calltree
