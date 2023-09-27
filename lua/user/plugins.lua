@@ -19,10 +19,10 @@ require("lazy").setup({
     "rebelot/kanagawa.nvim",
     -- cmp plugins
     -- LSP
-    {
-        'neoclide/coc.nvim',
-        branch = 'release',
-    },
+    -- {
+    --     'neoclide/coc.nvim',
+    --     branch = 'release',
+    -- },
     -- Telescope
     --[[ use("nvim-telescope/telescope.nvim") ]]
     {
