@@ -18,11 +18,27 @@ require("lazy").setup({
     -- Colorschemes
     "rebelot/kanagawa.nvim",
     -- cmp plugins
-    -- LSP
+    -- LSP coc
     -- {
     --     'neoclide/coc.nvim',
     --     branch = 'release',
     -- },
+    -- LSP native
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+    -- lsp cmp
+    {
+        "hrsh7th/cmp-nvim-lsp",
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-cmdline',
+        'hrsh7th/nvim-cmp',
+        -- snips
+        'hrsh7th/cmp-vsnip',
+        'hrsh7th/vim-vsnip',
+        "rafamadriz/friendly-snippets",
+    },
     -- Telescope
     --[[ use("nvim-telescope/telescope.nvim") ]]
     {
@@ -79,7 +95,7 @@ require("lazy").setup({
     -- "ldelossa/litee-calltree.nvim",
 
     -- rust
-    -- "simrat39/rust-tools.nvim",
+    "simrat39/rust-tools.nvim",
 
     -- Debugging
     "nvim-lua/plenary.nvim",
@@ -92,16 +108,15 @@ require("lazy").setup({
     -- floating term
     'voldikss/vim-floaterm',
     -- nice lsp ui (ui for code actions and more)
-    -- {
-    --     "glepnir/lspsaga.nvim",
-    --     dependencies = {
-    --         { "nvim-tree/nvim-web-devicons" },
-    --         --Please make sure you install markdown and markdown_inline parser
-    --         { "nvim-treesitter/nvim-treesitter" },
-    --     },
-    -- },
+    {
+        "glepnir/lspsaga.nvim",
+        dependencies = {
+            { "nvim-tree/nvim-web-devicons" },
+            --Please make sure you install markdown and markdown_inline parser
+            { "nvim-treesitter/nvim-treesitter" },
+        },
+    },
     -- outline
-    'liuchengxu/vista.vim',
     -- {
     --     "SmiteshP/nvim-navbuddy",
     --     dependencies = {
