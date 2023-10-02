@@ -30,7 +30,7 @@ vim.diagnostic.config({
     },
 })
 
-vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float()]])
+-- vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float()]])
 
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
