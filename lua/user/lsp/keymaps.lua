@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             ["gi"] = { "<cmd>:Lspsaga finder imp+def+ref+tyd<CR>", "Implementation" },
             ["gk"] = { vim.lsp.buf.signature_help, "Signature" },
             ["gr"] = { require("telescope.builtin").lsp_references, "References" },
-            ["<K>"] = { "<cmd>Lspsaga hover_doc<CR>", "Lsp hover" },
+            ["K"] = { "<cmd>Lspsaga hover_doc<CR>", "Lsp hover" },
         }, opts)
 
         wk.register({
