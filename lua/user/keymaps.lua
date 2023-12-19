@@ -123,6 +123,11 @@ vim.keymap.set("n", "<P", "<Plug>(YankyPutIndentBeforeShiftLeft)")
 vim.keymap.set("n", "=p", "<Plug>(YankyPutAfterFilter)")
 vim.keymap.set("n", "=P", "<Plug>(YankyPutBeforeFilter)")
 keymap("v", "p", '"_dP"', opts) -- holds on what we just pasted (in visual mode if we paste something over something2 it will copy something2 so the next time we will use past it will past something2)
+-- substitution
+vim.keymap.set("n", "<leader>c", require('substitute').operator, { noremap = true })
+vim.keymap.set("n", "<leader>cc", require('substitute').line, { noremap = true })
+vim.keymap.set("n", "<leader>C", require('substitute').eol, { noremap = true })
+vim.keymap.set("x", "<leader>c", require('substitute').visual, { noremap = true })
 
 -- easy save
 keymap("n", "<leader>w", ":w<CR>", opts)

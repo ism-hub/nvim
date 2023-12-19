@@ -144,6 +144,8 @@ require("lazy").setup({
     "sindrets/diffview.nvim",
     -- yank ring
     "gbprod/yanky.nvim",
+    -- substitute from yanked
+    "gbprod/substitute.nvim",
     -- lsp highlight (no need for setup call)
     "RRethy/vim-illuminate",
     -- orgmode

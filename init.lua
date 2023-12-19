@@ -27,3 +27,6 @@ require("user.startup")
 require("user.tab")
 require("user.term")
 require("user.orgmode")
+require("substitute").setup({
+    on_substitute = require("yanky.integration").substitute(),
+})
