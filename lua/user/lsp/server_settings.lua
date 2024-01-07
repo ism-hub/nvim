@@ -45,9 +45,9 @@ require("mason-lspconfig").setup_handlers({
     -- Next, you can provide a dedicated handler for specific servers.
     -- For example, a handler override for the `rust_analyzer`:
     ["rust_analyzer"] = function()
-        local extension_path = vim.env.HOME .. "/.vscode-server/extensions/vadimcn.vscode-lldb-1.9.0/"
-        local codelldb_path = extension_path .. "adapter/codelldb"
-        local liblldb_path = extension_path .. "lldb/lib/liblldb.so" -- MacOS: This may be .dylib
+        local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/"
+        local codelldb_path = extension_path .. "bin/codelldb"
+        local liblldb_path = extension_path .. "packages/codelldb/extension/lldb/lib/liblldb.so"
 
         local rt = require("rust-tools")
 

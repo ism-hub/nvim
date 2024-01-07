@@ -26,6 +26,7 @@ require("lazy").setup({
     -- LSP native
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
+    "jay-babu/mason-nvim-dap.nvim",
     "neovim/nvim-lspconfig",
     -- lsp cmp
     {
