@@ -1,6 +1,6 @@
 local configs = require("nvim-treesitter.configs")
 configs.setup({
-    ensure_installed = { "cpp", "markdown", "markdown_inline", "org", "lua" },
+    ensure_installed = { "cpp", "markdown", "markdown_inline", "org", "lua", "vimdoc", "rust" },
     highlight = {
         enable = true,
 
