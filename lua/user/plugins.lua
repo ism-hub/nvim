@@ -96,7 +96,12 @@ require("lazy").setup({
     -- "ldelossa/litee-calltree.nvim",
 
     -- rust
-    "simrat39/rust-tools.nvim",
+    -- "simrat39/rust-tools.nvim",
+    {
+        'mrcjkb/rustaceanvim',
+        -- version = '^3', -- Recommended
+        ft = { 'rust' },
+    },
 
     -- Debugging
     "nvim-lua/plenary.nvim",
