@@ -30,6 +30,24 @@ vim.diagnostic.config({
     },
 })
 
+-- inlay hints (only version > .10)
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client.server_capabilities.inlayHintProvider then
+            f = function()
+                vim.lsp.inlay_hint.enable(args.buf, true)
+            end
+            if not pcall(f) then
+                print("vim.lsp.inlay_hint.enable FAILED maybe version < .10 ?")
+            end
+            -- vim.lsp.inlay_hint.enable(args.buf, true)
+        end
+        -- whatever other lsp config you want
+    end
+})
+
 -- vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float()]])
 
 
