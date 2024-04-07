@@ -165,4 +165,6 @@ require("lazy").setup({
     -- obsidian
     "epwalsh/obsidian.nvim",
     "folke/tokyonight.nvim",
+    -- project level search and replace
+    "nvim-pack/nvim-spectre",
 })
