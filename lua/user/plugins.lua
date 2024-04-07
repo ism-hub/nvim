@@ -108,6 +108,7 @@ require("lazy").setup({
     "mfussenegger/nvim-dap",
     "theHamsta/nvim-dap-virtual-text",
     "rcarriga/nvim-dap-ui",
+    "nvim-neotest/nvim-nio",
 
     -- folding
     { "kevinhwang91/nvim-ufo", dependencies = { "kevinhwang91/promise-async" } },
