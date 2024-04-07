@@ -3,7 +3,7 @@ vim.opt.backup = false                          -- creates a backup file
 vim.opt.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 2                           -- more space in the neovim  command line for displaying messages
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
-vim.opt.conceallevel = 0                        -- so that `` is visible in markdowen files
+vim.opt.conceallevel = 2                        -- so that `` is visible in markdowen files
 vim.opt.fileencoding = "utf-8"                  -- the encoding written to a file
 vim.opt.hlsearch = true                         -- highlight all matches on previous search pattern
 vim.opt.ignorecase = true                       -- ignore case in search patterns
@@ -53,3 +53,4 @@ hi def IlluminatedWordWrite guifg=none guibg=Grey30
 -- vim.g.coq_settings = { ["auto_start"] = true, ["keymap.jump_to_mark"] = "<C-b>", keymap = { recommended = false } }
 -- orgmode folder
 vim.g.orgfolder = "~/orgfiles"
+vim.g.obsidianfolder = "~/servers/nclient/nextcloud/Documents/obsidian"

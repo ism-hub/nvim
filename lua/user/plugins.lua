@@ -162,4 +162,7 @@ require("lazy").setup({
     'nvimtools/none-ls.nvim',
     'davidmh/cspell.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
+    -- obsidian
+    "epwalsh/obsidian.nvim",
+    "folke/tokyonight.nvim",
 })
