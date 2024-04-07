@@ -123,13 +123,13 @@ require("lazy").setup({
         },
     },
     -- outline
-    -- {
-    --     "SmiteshP/nvim-navbuddy",
-    --     dependencies = {
-    --         "SmiteshP/nvim-navic",
-    --         "MunifTanjim/nui.nvim",
-    --     },
-    -- },
+    {
+        "SmiteshP/nvim-navbuddy",
+        dependencies = {
+            "SmiteshP/nvim-navic",
+            "MunifTanjim/nui.nvim",
+        },
+    },
     -- session
     -- "rmagatti/auto-session",
     "olimorris/persisted.nvim",
