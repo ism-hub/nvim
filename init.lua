@@ -30,3 +30,4 @@ require("user.orgmode")
 require("substitute").setup({
     on_substitute = require("yanky.integration").substitute(),
 })
+require("user.headlines")
