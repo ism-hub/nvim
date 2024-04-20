@@ -168,4 +168,6 @@ require("lazy").setup({
     "folke/tokyonight.nvim",
     -- project level search and replace
     "nvim-pack/nvim-spectre",
+    -- perf annotations
+    "t-troebst/perfanno.nvim",
 })

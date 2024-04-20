@@ -32,3 +32,4 @@ require("substitute").setup({
 })
 require("user.obsidian")
 require("user.headlines")
+require("user.perf")
