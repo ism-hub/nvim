@@ -156,7 +156,7 @@ require("lazy").setup({
     -- lsp highlight (no need for setup call)
     "RRethy/vim-illuminate",
     -- orgmode
-    'nvim-orgmode/orgmode',
+    -- 'nvim-orgmode/orgmode',
     'akinsho/org-bullets.nvim',
     'lukas-reineke/headlines.nvim',
     -- cspell
