@@ -42,13 +42,13 @@ configs.setup({
     --         "TSRainbowRed",
     --     },
     -- },
-    -- incremental_selection = {
-    --     enable = true,
-    --     keymaps = {
-    --         init_selection = "<cr>",
-    --         node_incremental = "<cr>",
-    --         scope_incremental = "grc",
-    --         node_decremental = "<BS>",
-    --     },
-    -- },
+    incremental_selection = {
+        enable = true,
+        keymaps = {
+            init_selection = "<cr>",
+            node_incremental = "<cr>",
+            scope_incremental = "grc",
+            node_decremental = "<BS>",
+        },
+    },
 })
