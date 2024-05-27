@@ -1,7 +1,8 @@
 -- require("lspconfig")
 require("mason").setup()
 require("mason-nvim-dap").setup({
-    ensure_installed = { "codelldb", "cpptools" } -- for rust
+    ensure_installed = { "codelldb", "cpptools" }, -- for rust
+    handlers = {},                                 -- :DapContinue will ask for the .exe and start the debugger
 })
 require("mason-lspconfig").setup {
     ensure_installed = { "lua_ls", "clangd", "rust_analyzer" },
