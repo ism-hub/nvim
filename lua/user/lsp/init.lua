@@ -5,7 +5,7 @@ require("mason-nvim-dap").setup({
     handlers = {},                                 -- :DapContinue will ask for the .exe and start the debugger
 })
 require("mason-lspconfig").setup {
-    ensure_installed = { "lua_ls", "clangd", "rust_analyzer" },
+    ensure_installed = { "lua_ls", "clangd", "rust_analyzer", "omnisharp" },
 }
 require('mason-tool-installer').setup {
     ensure_installed = { "cspell" }

@@ -1,6 +1,6 @@
 local configs = require("nvim-treesitter.configs")
 configs.setup({
-    ensure_installed = { "cpp", "markdown", "markdown_inline", "yaml", "org", "lua", "vimdoc", "rust" },
+    ensure_installed = { "cpp", "markdown", "markdown_inline", "yaml", "org", "lua", "vimdoc", "rust", "c_sharp" },
     highlight = {
         enable = true,
 
@@ -52,3 +52,6 @@ configs.setup({
         },
     },
 })
+
+-- for markdowns (mainly when showing docs in'hover') associate csharp and c# with the c_sharp TS
+vim.treesitter.language.register('c_sharp', { 'csharp', 'c#' })
