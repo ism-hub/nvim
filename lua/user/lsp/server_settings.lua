@@ -60,6 +60,24 @@ require("mason-lspconfig").setup_handlers({
         -- require("lspconfig")[server_name].setup({ capabilities = capabilities })
         require("lspconfig")[server_name].setup { capabilities = capabilities }
     end,
+    ["gopls"] = function()
+        require("lspconfig")["gopls"].setup({
+            capabilities = capabilities,
+            settings = {
+                gopls = {
+                    ["ui.inlayhint.hints"] = {
+                        assignVariableTypes = true,
+                        compositeLiteralTypes = true,
+                        compositeLiteralFields = true,
+                        functionTypeParameters = true,
+                        rangeVariableTypes = true,
+                        constantValues = true,
+                        parameterNames = true
+                    },
+                },
+            },
+        })
+    end,
     -- rust analyzer doesn't use lspconfig
     ["rust_analyzer"] = function()
         vim.g.rustaceanvim = function()
