@@ -2,7 +2,7 @@ require("obsidian").setup({
     workspaces = {
         {
             name = "general",
-            path = "~/servers/nclient/nextcloud/Documents/obsidian",
+            path = vim.g.obsidianfolder,
         },
     },
 

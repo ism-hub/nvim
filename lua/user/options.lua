@@ -53,4 +53,4 @@ hi def IlluminatedWordWrite guifg=none guibg=Grey30
 -- vim.g.coq_settings = { ["auto_start"] = true, ["keymap.jump_to_mark"] = "<C-b>", keymap = { recommended = false } }
 -- orgmode folder
 vim.g.orgfolder = "~/orgfiles"
-vim.g.obsidianfolder = "~/servers/nclient/nextcloud/Documents/obsidian"
+vim.g.obsidianfolder = "~/obsidian"
