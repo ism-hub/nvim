@@ -171,4 +171,6 @@ require("lazy").setup({
     "nvim-pack/nvim-spectre",
     -- perf annotations
     "t-troebst/perfanno.nvim",
+    -- c#
+    "Hoffs/omnisharp-extended-lsp.nvim",
 })

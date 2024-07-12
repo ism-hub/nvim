@@ -60,6 +60,18 @@ require("mason-lspconfig").setup_handlers({
         -- require("lspconfig")[server_name].setup({ capabilities = capabilities })
         require("lspconfig")[server_name].setup { capabilities = capabilities }
     end,
+    -- this is the "suboptimal" way, but intgrates better with nvim
+    ["omnisharp"] = function()
+        require("lspconfig")["omnisharp"].setup({
+            capabilities = capabilities,
+            handlers = {
+                ["textDocument/definition"] = require('omnisharp_extended').definition_handler,
+                ["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler,
+                ["textDocument/references"] = require('omnisharp_extended').references_handler,
+                ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
+            },
+        })
+    end,
     ["gopls"] = function()
         require("lspconfig")["gopls"].setup({
             capabilities = capabilities,
