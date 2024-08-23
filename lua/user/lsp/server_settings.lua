@@ -52,6 +52,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local util = require 'lspconfig/util'
 require("mason-lspconfig").setup_handlers({
     -- The first entry (without a key) will be the default handler
     -- and will be called for each installed server that doesn't have
@@ -70,6 +71,7 @@ require("mason-lspconfig").setup_handlers({
                 ["textDocument/references"] = require('omnisharp_extended').references_handler,
                 ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
             },
+            root_dir = util.root_pattern("*.sln", "**/*.sln"),
         })
     end,
     ["gopls"] = function()
