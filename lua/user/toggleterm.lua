@@ -1,10 +1,12 @@
 require("toggleterm").setup({
+    --     enabled = true,
     winbar = {
         enabled = true,
         name_formatter = function(term) --  term: Terminal
             return term.name
         end
-    }
+    },
+    close_on_exit = false,
 })
 
 -- term 1 is always the floating one

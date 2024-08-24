@@ -36,10 +36,44 @@
 -- autocmd FileType floaterm nnoremap <silent><buffer> gf :call <SID>open_in_normal_window()<CR>
 -- ]])
 
-vim.g.floaterm_height = 0.95
-vim.g.floaterm_width = 0.9
+-- vim.g.floaterm_height = 0.95
+-- vim.g.floaterm_width = 0.9
 
 local M = {}
+
+-- Define a function to focus on a window with a filetype that is not in the excluded list
+-- from ChatGPT
+local function focus_non_excluded_window()
+    local excluded_filetypes = { "toggleterm", "neo-tree", "OverseerList" }
+    local current_win = vim.api.nvim_get_current_win()
+
+    -- Get all windows
+    local windows = vim.api.nvim_list_wins()
+
+    for _, win in ipairs(windows) do
+        -- Get the filetype of the current window
+        local buf = vim.api.nvim_win_get_buf(win)
+        local filetype = vim.api.nvim_buf_get_option(buf, "filetype")
+
+        -- Check if the filetype is not in the excluded list
+        local is_excluded = false
+        for _, excluded in ipairs(excluded_filetypes) do
+            if filetype == excluded then
+                is_excluded = true
+                break
+            end
+        end
+
+        if not is_excluded then
+            -- Focus on the first non-excluded window
+            vim.api.nvim_set_current_win(win)
+            return
+        end
+    end
+
+    -- If all windows are excluded, stay in the current window
+    vim.api.nvim_set_current_win(current_win)
+end
 
 M.gf = function()
     -- for c# its - path/file.cs(line,col):
@@ -50,8 +84,9 @@ M.gf = function()
         return
     end
 
-    vim.g.floaterm_autoinsert = false
-    vim.cmd("FloatermHide")
+    -- vim.g.floaterm_autoinsert = false
+    vim.cmd("close")
+    focus_non_excluded_window()
     vim.cmd('e ' .. path)             -- go to file
     vim.cmd(':' .. line)              -- at line
     vim.cmd('normal! ' .. col .. '|') -- at col

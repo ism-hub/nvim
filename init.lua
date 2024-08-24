@@ -33,5 +33,6 @@ require("substitute").setup({
 require("user.headlines")
 require("user.perf")
 require("user.toggleterm")
-require("user.obsidian")
+require("user.overseer")
+
 require("dressing").setup()

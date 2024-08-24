@@ -175,6 +175,12 @@ wk.register({
 wk.register({
     ["<C-t>"] = { "<cmd>:exe v:count1 . 'ToggleTerm'<CR>", "Toggle Term" },
 }, { mode = "t" })
+wk.register({
+    ["<leader>t"] = { "<cmd>:OverseerToggle right<CR>", "Toggle overseer" }
+})
+wk.register({
+    ["<leader>n"] = { "<cmd>:OverseerRun<CR>", "Task Selection" }
+})
 -- wk.register({
 --     ["<C-t>"] = { "<cmd>FloatermToggle<CR><cmd>let g:floaterm_autoinsert = v:true<CR>", "Toggle Term" },
 -- }, { mode = "t" })
