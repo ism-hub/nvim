@@ -170,20 +170,26 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Terminal --
 wk.register({
-    ["<C-t>"] = { "<cmd>FloatermToggle<CR><cmd>let g:floaterm_autoinsert = v:true<CR>", "Toggle Term" },
+    ["<C-t>"] = { "<cmd>:exe v:count1 . 'ToggleTerm'<CR>", "Toggle Term" },
+})
+wk.register({
+    ["<C-t>"] = { "<cmd>:exe v:count1 . 'ToggleTerm'<CR>", "Toggle Term" },
 }, { mode = "t" })
-wk.register({
-    ["<C-t>"] = { "<cmd>FloatermToggle<CR><cmd>let g:floaterm_autoinsert = v:true<CR>", "Toggle Term" },
-})
-wk.register({
-    ["<leader>tt"] = { "<cmd>FloatermNew<CR>", "New Term" },
-})
-wk.register({
-    ["<leader>tn"] = { "<cmd>FloatermNext<CR>", "Next Term" },
-})
-wk.register({
-    ["<leader>tp"] = { "<cmd>FloatermPrev<CR>", "Prev Term" },
-})
+-- wk.register({
+--     ["<C-t>"] = { "<cmd>FloatermToggle<CR><cmd>let g:floaterm_autoinsert = v:true<CR>", "Toggle Term" },
+-- }, { mode = "t" })
+-- wk.register({
+--     ["<C-t>"] = { "<cmd>FloatermToggle<CR><cmd>let g:floaterm_autoinsert = v:true<CR>", "Toggle Term" },
+-- })
+-- wk.register({
+--     ["<leader>tt"] = { "<cmd>FloatermNew<CR>", "New Term" },
+-- })
+-- wk.register({
+--     ["<leader>tn"] = { "<cmd>FloatermNext<CR>", "Next Term" },
+-- })
+-- wk.register({
+--     ["<leader>tp"] = { "<cmd>FloatermPrev<CR>", "Prev Term" },
+-- })
 -- Better terminal navigation
 vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
 -- vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)

@@ -114,7 +114,7 @@ require("lazy").setup({
     -- folding
     { "kevinhwang91/nvim-ufo", dependencies = { "kevinhwang91/promise-async" } },
     -- floating term
-    'voldikss/vim-floaterm',
+    -- 'voldikss/vim-floaterm',
     -- nice lsp ui (ui for code actions and more)
     {
         "glepnir/lspsaga.nvim",
@@ -173,4 +173,10 @@ require("lazy").setup({
     "t-troebst/perfanno.nvim",
     -- c#
     "Hoffs/omnisharp-extended-lsp.nvim",
+    -- terminal which is not float term
+    { 'akinsho/toggleterm.nvim', version = "*" },
+    -- launch configuration
+    'stevearc/overseer.nvim',
+    -- better vim ui select
+    'stevearc/dressing.nvim',
 })

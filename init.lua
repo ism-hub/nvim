@@ -30,6 +30,8 @@ require("user.term")
 require("substitute").setup({
     on_substitute = require("yanky.integration").substitute(),
 })
-require("user.obsidian")
 require("user.headlines")
 require("user.perf")
+require("user.toggleterm")
+require("user.obsidian")
+require("dressing").setup()
