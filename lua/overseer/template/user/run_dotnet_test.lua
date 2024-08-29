@@ -10,7 +10,7 @@ return
             -- additional arguments for the cmd
             args = { 'test', '-c', 'Debug', '--filter', '"FullyQualifiedName~' .. params["test_name"] .. '"' },
             -- the name of the task (defaults to the cmd of the task)
-            name = "RunDotnetTest",
+            name = params["test_name"],
             -- set the working directory for the task
             cwd = ".",
             -- additional environment variables
@@ -25,6 +25,9 @@ return
             -- },
         }
     end,
+    condition = {
+        filetype = { "cs" },
+    },
     -- Optional fields
     -- desc = "Lim.Console",
 }

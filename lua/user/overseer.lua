@@ -1,5 +1,5 @@
 require('overseer').setup({
-    templates = { "builtin", "user.debug_dotnet_test", "user.run_dotnet_test" },
+    templates = { "builtin", "user.debug_dotnet_test", "user.run_dotnet_test", "user.dotnet_build" },
     strategy = {
         "toggleterm",
         close_on_exit = false,
@@ -35,6 +35,7 @@ for i, task in ipairs(tasks) do
     require('overseer').register_template(task)
 end
 
+-- code actions for run/debug specific dotnet test
 local null_ls = require("null-ls")
 null_ls.register({
     name = "dotnet test",
