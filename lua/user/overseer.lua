@@ -1,4 +1,5 @@
 require('overseer').setup({
+    templates = { "builtin", "user.debug_dotnet_test", "user.run_dotnet_test" },
     strategy = {
         "toggleterm",
         close_on_exit = false,
@@ -33,3 +34,62 @@ local tasks = require "my_tasks"
 for i, task in ipairs(tasks) do
     require('overseer').register_template(task)
 end
+
+local null_ls = require("null-ls")
+null_ls.register({
+    name = "dotnet test",
+    method = null_ls.methods.CODE_ACTION,
+    filetypes = { "cs" },
+    generator = {
+        fn = function(params)
+            local node = vim.treesitter.get_node()
+            local parent = node:parent()
+
+            if parent == nil then
+                return {}
+            end
+
+            local parent_type = parent:type() -- method_declaration
+
+            if parent_type ~= "method_declaration" then
+                return {}
+            end
+
+            local saw_fact_attr = false
+            for child in parent:iter_children() do
+                local type = child:type()
+                if type == "attribute_list" then
+                    local attr_text = vim.treesitter.get_node_text(child, params["bufnr"])
+                    if not string.match(attr_text, "Fact") then
+                        return {}
+                    else
+                        saw_fact_attr = true
+                    end
+                elseif type == 'identifier' then
+                    if not saw_fact_attr then
+                        return {}
+                    end
+                    local func_name = vim.treesitter.get_node_text(child, params["bufnr"])
+                    if func_name:lower():match("^test") then
+                        return {
+                            {
+                                title = 'debug',
+                                action = function()
+                                    require('overseer').run_template({ name = "DebugDotnetTest", params = { test_name = func_name } })
+                                end
+                            },
+                            {
+                                title = 'run',
+                                action = function()
+                                    require('overseer').run_template({ name = "RunDotnetTest", params = { test_name = func_name } })
+                                end
+                            }
+                        }
+                    else
+                        return {}
+                    end
+                end
+            end
+        end
+    }
+})
