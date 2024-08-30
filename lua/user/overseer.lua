@@ -30,6 +30,15 @@ end
 
 package.path = package.path .. before_root_dir .. "/tasks/?.lua" .. ";"
 
+-- local dotnet_run_task = require('overseer.template.user.dotnet_run')
+-- local dotnet_debug_task = require('overseer.template.user.dotnet_debug')
+-- local run_myconsole_proj = require('overseer').wrap_template(dotnet_run_task, { name = "Run My-Console-App" },
+--     { project = "MyApp.Console", env = { MY_ENV_VAR = "env from wrapped" } })
+-- local debug_myconsole_proj = require('overseer').wrap_template(dotnet_debug_task, { name = "Debug My-Console-App" },
+--     { project = "MyApp.Console", env = { MY_ENV_VAR = "env from wrapped for debug" } })
+-- require('overseer').register_template(run_myconsole_proj)
+-- require('overseer').register_template(debug_myconsole_proj)
+
 local tasks = require "my_tasks"
 for i, task in ipairs(tasks) do
     require('overseer').register_template(task)

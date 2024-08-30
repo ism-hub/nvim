@@ -1,24 +1,26 @@
 return
 {
+    params = {
+        project = { type = 'string' },
+        env = { type = 'opaque' }
+    },
     -- Required fields
-    name = "DotnetBuild",
+    name = "DotnetRun",
     builder = function(params)
         -- This must return an overseer.TaskDefinition
         return {
             -- cmd is the only required field
             cmd = { "dotnet" },
             -- additional arguments for the cmd
-            args = { 'build', '-c', 'Debug' },
+            args = { 'run', '--project', params["project"] },
             -- the name of the task (defaults to the cmd of the task)
             -- name = "DotnetBuild",
             -- set the working directory for the task
             cwd = ".",
             -- additional environment variables
-            env = {
-                -- VSTEST_HOST_DEBUG = "1",
-            },
+            env = params['env'],
             -- the list of components or component aliases to add to the task
-            -- components = { "attach_debuger_on_dotnet_test", "on_exit_set_status" },
+            -- components = { { "debug_dotnet_project", project = "someproject" }, "on_exit_set_status" },
             -- arbitrary table of data for your own personal use
             -- metadata = {
             --     foo = "bar",

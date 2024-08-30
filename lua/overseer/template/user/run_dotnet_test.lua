@@ -29,5 +29,5 @@ return
         filetype = { "cs" },
     },
     -- Optional fields
-    -- desc = "Lim.Console",
+    -- desc = "Console",
 }
