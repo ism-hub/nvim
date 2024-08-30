@@ -39,9 +39,11 @@ package.path = package.path .. before_root_dir .. "/tasks/?.lua" .. ";"
 -- require('overseer').register_template(run_myconsole_proj)
 -- require('overseer').register_template(debug_myconsole_proj)
 
-local tasks = require "my_tasks"
-for i, task in ipairs(tasks) do
-    require('overseer').register_template(task)
+local ok, tasks = pcall(require, "my_tasks")
+if ok then
+    for i, task in ipairs(tasks) do
+        require('overseer').register_template(task)
+    end
 end
 
 -- code actions for run/debug specific dotnet test
