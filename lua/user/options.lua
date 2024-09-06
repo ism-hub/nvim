@@ -54,3 +54,5 @@ hi def IlluminatedWordWrite guifg=none guibg=Grey30
 -- orgmode folder
 vim.g.orgfolder = "~/orgfiles"
 vim.g.obsidianfolder = "~/obsidian"
+
+vim.o.sessionoptions = "curdir,folds,tabpages"
