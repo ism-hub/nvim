@@ -4,6 +4,8 @@ return {
     params = {
         -- See :help overseer-params
         project = { type = "string" },
+        cwd = { type = "string" },
+        program = { type = "string" },
         env = { type = "opaque" },
     },
     -- Optional, default true. Set to false to disallow editing this component in the task editor
@@ -24,9 +26,9 @@ return {
                             type = "coreclr",
                             name = "launch - netcoredbg",
                             request = "launch",
-                            program = vim.fn.getcwd() ..
-                                '/' .. params['project'] .. '/bin/Debug/net8.0/' .. params['project'] .. '.dll',
+                            program = params['program'],
                             env = params['env'],
+                            cwd = params['cwd']
                         })
                 end
                 -- Called when the task has reached a completed state.
@@ -34,8 +36,12 @@ return {
         }
     end,
     condition = {
-        -- A string or list of strings
-        -- Only matches when current buffer is one of the listed filetypes
-        filetype = { "cs" },
+        callback = function(search)
+            -- check if sln or csproj exists
+            return vim.fn.glob('*.sln') ~= '' or
+                vim.fn.glob('*/*.sln') ~= '' or
+                vim.fn.glob('*.csproj') ~= '' or
+                vim.fn.glob('*/*.csproj') ~= ''
+        end,
     },
 }

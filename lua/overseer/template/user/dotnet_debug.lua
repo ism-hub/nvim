@@ -2,7 +2,9 @@ return
 {
     params = {
         project = { type = 'string' },
-        env = { type = 'opaque' }
+        env = { type = 'opaque' },
+        cwd = { type = "string" },
+        program = { type = "string" },
     },
     -- Required fields
     name = "DotnetDebug",
@@ -16,13 +18,13 @@ return
             -- the name of the task (defaults to the cmd of the task)
             -- name = "DotnetBuild",
             -- set the working directory for the task
-            cwd = ".",
+            cwd = params['cwd'],
             -- additional environment variables
-            env = {
-                -- VSTEST_HOST_DEBUG = "1",
-            },
+            -- env = {
+            -- VSTEST_HOST_DEBUG = "1",
+            -- },
             -- the list of components or component aliases to add to the task
-            components = { { "debug_dotnet_project", project = params["project"], env = params["env"] }, "on_exit_set_status" },
+            components = { { "debug_dotnet_project", program = params['program'], cwd = params['cwd'], project = params["project"], env = params["env"] }, "on_exit_set_status" },
             -- arbitrary table of data for your own personal use
             -- metadata = {
             --     foo = "bar",
@@ -30,7 +32,13 @@ return
         }
     end,
     condition = {
-        filetype = { "cs" },
+        callback = function(search)
+            -- check if sln or csproj exists
+            return vim.fn.glob('*.sln') ~= '' or
+                vim.fn.glob('*/*.sln') ~= '' or
+                vim.fn.glob('*.csproj') ~= '' or
+                vim.fn.glob('*/*.csproj') ~= ''
+        end,
     },
     -- Optional fields
     -- desc = "Console",

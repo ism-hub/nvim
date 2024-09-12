@@ -8,11 +8,11 @@ return
             -- cmd is the only required field
             cmd = { "dotnet" },
             -- additional arguments for the cmd
-            args = { 'test', '-c', 'Debug', '--filter', '"FullyQualifiedName~' .. params["test_name"] .. '"' },
+            args = { 'test', params['cwd'], '-c', 'Debug', '--filter', '"FullyQualifiedName~' .. params["test_name"] .. '"' },
             -- the name of the task (defaults to the cmd of the task)
-            name = params["test_name"],
+            -- name = params["test_name"],
             -- set the working directory for the task
-            cwd = ".",
+            cwd = params['cwd'],
             -- additional environment variables
             env = {
                 VSTEST_HOST_DEBUG = "1",

@@ -30,9 +30,14 @@ return {
             end,
         }
     end,
+
     condition = {
-        -- A string or list of strings
-        -- Only matches when current buffer is one of the listed filetypes
-        filetype = { "cs" },
+        callback = function(search)
+            -- check if sln or csproj exists
+            return vim.fn.glob('*.sln') ~= '' or
+                vim.fn.glob('*/*.sln') ~= '' or
+                vim.fn.glob('*.csproj') ~= '' or
+                vim.fn.glob('*/*.csproj') ~= ''
+        end,
     },
 }

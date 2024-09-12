@@ -2,7 +2,8 @@ return
 {
     params = {
         project = { type = 'string' },
-        env = { type = 'opaque' }
+        cwd = { type = 'string' },
+        env = { type = 'opaque' },
     },
     -- Required fields
     name = "DotnetRun",
@@ -16,7 +17,7 @@ return
             -- the name of the task (defaults to the cmd of the task)
             -- name = "DotnetBuild",
             -- set the working directory for the task
-            cwd = ".",
+            cwd = params['cwd'],
             -- additional environment variables
             env = params['env'],
             -- the list of components or component aliases to add to the task
@@ -28,8 +29,15 @@ return
         }
     end,
     condition = {
-        filetype = { "cs" },
+        callback = function(search)
+            -- check if sln or csproj exists
+            return vim.fn.glob('*.sln') ~= '' or
+                vim.fn.glob('*/*.sln') ~= '' or
+                vim.fn.glob('*.csproj') ~= '' or
+                vim.fn.glob('*/*.csproj') ~= ''
+        end,
     },
+
     -- Optional fields
     -- desc = "Console",
 }

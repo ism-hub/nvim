@@ -26,7 +26,13 @@ return
         }
     end,
     condition = {
-        filetype = { "cs" },
+        callback = function(search)
+            -- check if sln or csproj exists
+            return vim.fn.glob('*.sln') ~= '' or
+                vim.fn.glob('*/*.sln') ~= '' or
+                vim.fn.glob('*.csproj') ~= '' or
+                vim.fn.glob('*/*.csproj') ~= ''
+        end,
     },
     -- Optional fields
     -- desc = "Console",

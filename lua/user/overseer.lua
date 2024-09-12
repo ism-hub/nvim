@@ -81,25 +81,40 @@ null_ls.register({
                     if not saw_fact_attr then
                         return {}
                     end
-                    local func_name = vim.treesitter.get_node_text(child, params["bufnr"])
-                    if func_name:lower():match("^test") then
-                        return {
-                            {
-                                title = 'debug',
-                                action = function()
-                                    require('overseer').run_template({ name = "DebugDotnetTest", params = { test_name = func_name } })
-                                end
-                            },
-                            {
-                                title = 'run',
-                                action = function()
-                                    require('overseer').run_template({ name = "RunDotnetTest", params = { test_name = func_name } })
-                                end
-                            }
-                        }
-                    else
-                        return {}
+
+                    -- find the class name
+                    local class_prefix = ''
+                    local parent_class = child
+                    while parent_class do
+                        if parent_class:type() == 'class_declaration' then
+                            class_prefix = vim.treesitter.get_node_text(parent_class:child(2), params['bufnr']) .. '.'
+                            break
+                        end
+                        parent_class = parent_class:parent()
                     end
+                    -- vim.print(class_prefix)
+
+                    local func_name = vim.treesitter.get_node_text(child, params["bufnr"])
+                    -- if func_name:lower():match("^test") then
+                    local current_file = vim.api.nvim_buf_get_name(params["bufnr"])
+                    local cwd = require 'lspconfig.util'.root_pattern('*.csproj')(current_file)
+                    return {
+                        {
+                            title = 'debug',
+                            action = function()
+                                require('overseer').run_template({ name = "DebugDotnetTest", params = { cwd = cwd, test_name = class_prefix .. func_name } })
+                            end
+                        },
+                        {
+                            title = 'run',
+                            action = function()
+                                require('overseer').run_template({ name = "RunDotnetTest", params = { cwd = cwd, test_name = class_prefix .. func_name } })
+                            end
+                        }
+                    }
+                    -- else
+                    --     return {}
+                    -- end
                 end
             end
         end
