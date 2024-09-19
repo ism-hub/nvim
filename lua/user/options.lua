@@ -55,4 +55,12 @@ hi def IlluminatedWordWrite guifg=none guibg=Grey30
 vim.g.orgfolder = "~/orgfiles"
 vim.g.obsidianfolder = "~/obsidian"
 
-vim.o.sessionoptions = "curdir,folds,tabpages"
+vim.o.sessionoptions = "curdir,tabpages"
+if vim.g.neovide then
+    vim.keymap.set('v', '<D-c>', '"+y')             -- Copy
+    vim.keymap.set('n', '<D-v>', '"+P')             -- Past normal mode
+    vim.keymap.set('v', '<D-v>', '"+P')             -- Past visual mode
+    vim.keymap.set('c', '<D-v>', '<C-R>+')          -- Past command mode
+    vim.keymap.set('i', '<D-v>', '<C-R>+')          -- Past insert mode
+    vim.keymap.set('t', '<D-v>', '<C-\\><C-n>"+Pi') -- Past terminal mode
+end

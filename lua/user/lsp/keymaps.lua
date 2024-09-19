@@ -37,8 +37,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local opts = { buffer = ev.buf, noremap = true }
         wk.register({
             ["gD"] = { vim.lsp.buf.declaration, "Deceleration" },
-            ["gd"] = { vim.lsp.buf.definition, "Deceleration" },
-            ["gi"] = { "<cmd>:Lspsaga finder imp+def+ref+tyd<CR>", "Implementation" },
+            -- ["gd"] = { vim.lsp.buf.definition, "Deceleration" },
+            ["gd"] = { require("telescope.builtin").lsp_definitions, "Definitions" },
+            -- ["gi"] = { "<cmd>:Lspsaga finder imp+def+ref+tyd<CR>", "Implementation" },
+            ["gi"] = { require("telescope.builtin").lsp_implementations, "Implementations" },
             ["gk"] = { vim.lsp.buf.signature_help, "Signature" },
             ["gr"] = { require("telescope.builtin").lsp_references, "References" },
             ["K"] = { "<cmd>Lspsaga hover_doc<CR>", "Lsp hover" },
