@@ -158,7 +158,7 @@ require("lazy").setup({
     "RRethy/vim-illuminate",
     -- orgmode
     -- 'nvim-orgmode/orgmode',
-    'akinsho/org-bullets.nvim',
+    -- 'akinsho/org-bullets.nvim',
     'lukas-reineke/headlines.nvim',
     -- cspell
     'nvimtools/none-ls.nvim',
