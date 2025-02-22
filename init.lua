@@ -37,3 +37,4 @@ require("user.toggleterm")
 require("user.overseer")
 
 require("dressing").setup()
+require('user.crates')

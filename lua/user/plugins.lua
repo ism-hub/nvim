@@ -179,4 +179,8 @@ require("lazy").setup({
     'stevearc/overseer.nvim',
     -- better vim ui select
     'stevearc/dressing.nvim',
+    {
+        'saecki/crates.nvim',
+        tag = 'stable',
+    },
 })
