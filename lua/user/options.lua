@@ -64,4 +64,5 @@ if vim.g.neovide then
     vim.keymap.set('c', '<D-v>', '<C-R>+')          -- Past command mode
     vim.keymap.set('i', '<D-v>', '<C-R>+')          -- Past insert mode
     vim.keymap.set('t', '<D-v>', '<C-\\><C-n>"+Pi') -- Past terminal mode
+    vim.g.neovide_input_macos_option_key_is_meta = "both"
 end
