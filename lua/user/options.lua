@@ -34,7 +34,8 @@ vim.opt.signcolumn =
 vim.opt.wrap = false                            -- displays lines as one long line
 vim.opt.scrolloff = 8                           --
 vim.opt.sidescrolloff = 8                       --
-vim.opt.guifont = "monospace:h17"               -- the font used in graphical neovim applications
+vim.opt.guifont = "Cascadia Code NF:h13"        -- the font used in graphical neovim applications
+-- vim.opt.guifont = "monospace:h17"               -- the font used in graphical neovim applications
 vim.opt.shortmess:append("c")                   --
 vim.opt.completeopt = { "menu", "menuone", "noinsert", "noselect" }
 vim.opt.tw = 500
