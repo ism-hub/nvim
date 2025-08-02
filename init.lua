@@ -38,3 +38,4 @@ require("user.overseer")
 
 require("dressing").setup()
 require('user.crates')
+require('user.fontresize')

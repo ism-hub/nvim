@@ -203,3 +203,7 @@ keymap("t", "<C-h>", "<cmd>FloatermPrev<CR>", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<cmd>FloatermNext<CR>", term_opts)
+
+-- Keymaps to increase/decrease font size
+vim.keymap.set("n", "<C-=>", function() adjust_font_size(1) end)
+vim.keymap.set("n", "<C-->", function() adjust_font_size(-1) end)
