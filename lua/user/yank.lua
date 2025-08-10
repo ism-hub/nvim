@@ -1,11 +1,12 @@
-require("osc52").setup({})
+if not vim.g.neovide then
+    require("osc52").setup({})
+    function copy()
+        if vim.v.event.operator == "y" and vim.v.event.regname == "" then
+            require("osc52").copy_register('"')
+        end
+    end
 
-function copy()
-	if vim.v.event.operator == "y" and vim.v.event.regname == "" then
-		require("osc52").copy_register('"')
-	end
+    vim.api.nvim_create_autocmd("TextYankPost", { callback = copy })
 end
-
-vim.api.nvim_create_autocmd("TextYankPost", { callback = copy })
 
 require("yanky").setup({})
