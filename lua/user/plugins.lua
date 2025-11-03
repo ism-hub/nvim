@@ -98,11 +98,11 @@ require("lazy").setup({
 
     -- rust
     -- "simrat39/rust-tools.nvim",
-    {
-        'mrcjkb/rustaceanvim',
-        -- version = '^3', -- Recommended
-        ft = { 'rust' },
-    },
+    -- {
+    --     'mrcjkb/rustaceanvim',
+    --     -- version = '^3', -- Recommended
+    --     ft = { 'rust' },
+    -- },
 
     -- Debugging
     "nvim-lua/plenary.nvim",

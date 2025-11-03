@@ -50,6 +50,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float()]])
 
+-- vim.lsp.config('rust_analyzer', {
+-- Server-specific settings. See `:help lsp-quickstart`
+-- settings = {
+--     ['rust-analyzer'] = {},
+-- },
+-- })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local util = require 'lspconfig/util'
@@ -134,26 +140,26 @@ require("mason-lspconfig").setup({
             })
         end,
         -- rust analyzer doesn't use lspconfig
-        ["rust_analyzer"] = function()
-            vim.g.rustaceanvim = function()
-                local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/"
-                local codelldb_path = extension_path .. "bin/codelldb"
-                local liblldb_path = extension_path .. "packages/codelldb/extension/lldb/lib/liblldb.so"
-
-                local cfg = require('rustaceanvim.config')
-                return {
-                    server = {
-                        on_attach = function(client, bufnr)
-                            -- you can also put keymaps in here
-                            vim.keymap.set("n", "<C-space>", "<cmd>:RustLsp hover actions<CR>", { buffer = bufnr })
-                        end,
-                    },
-                    dap = {
-                        adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
-                    },
-                }
-            end
-        end
+        -- ["rust_analyzer"] = function()
+        --     vim.g.rustaceanvim = function()
+        --         local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/"
+        --         local codelldb_path = extension_path .. "bin/codelldb"
+        --         local liblldb_path = extension_path .. "packages/codelldb/extension/lldb/lib/liblldb.so"
+        --
+        --         local cfg = require('rustaceanvim.config')
+        --         return {
+        --             server = {
+        --                 on_attach = function(client, bufnr)
+        --                     -- you can also put keymaps in here
+        --                     vim.keymap.set("n", "<C-space>", "<cmd>:RustLsp hover actions<CR>", { buffer = bufnr })
+        --                 end,
+        --             },
+        --             dap = {
+        --                 adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
+        --             },
+        --         }
+        --     end
+        -- end
         -- Next, you can provide a dedicated handler for specific servers.
         -- For example, a handler override for the `rust_analyzer`:
         -- ["rust_analyzer"] = function()
